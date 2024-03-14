@@ -21,8 +21,10 @@ you can access client by this url http://localhost:3000
 
 - app is build through node, express and websocket in backend and next.js and websocket in frontend.
 - to handle multiple connection we are using websockets, server can communicate with multiple clients using websocket.
-- when someone enters a message, it will be broadcasted to all the clients joined through websockets.
+- when someone enters a message, it will be broadcasted to all the clients joined through websockets, we are using promises to handle concurrency here.
 
 ## Deployemnet link
 
 app is deployed at this link https://kuvaka-assignment.vercel.app/
+
+**_NOTE:_** You can access a demo working of this app from this [link](https://drive.google.com/file/d/1_tdmKJqSaR-CyS8xA8Dkyd0oVfioVwNA/view?usp=sharing)

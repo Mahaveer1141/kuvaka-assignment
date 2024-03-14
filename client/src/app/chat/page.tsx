@@ -18,12 +18,13 @@ export default function Chat() {
   const [inputMessage, setInputMessage] = useState("");
   const [username, setUsername] = useState("");
   const [messages, setMessages] = useState<IMessage[]>([]);
+  const [connectionOpen, setConnectionOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     const username = sessionStorage.getItem("username");
     const sessionMessages = JSON.parse(
-      sessionStorage.getItem("sessionMessages") || "[]"
+      sessionStorage.getItem("sessionMessages") || "[]",
     );
     if (!username) {
       router.push("/");
@@ -32,6 +33,10 @@ export default function Chat() {
     setUsername(username);
     setMessages(sessionMessages);
   }, []);
+
+  ws.onopen = () => {
+    setConnectionOpen(true);
+  };
 
   ws.onmessage = (event) => {
     const parsedMessage: IMessage = JSON.parse(event.data);
@@ -64,9 +69,16 @@ export default function Chat() {
   const leaveChat = () => {
     sessionStorage.removeItem("username");
     sessionStorage.removeItem("sessionMessages");
-    ws.close();
     router.push("/");
   };
+
+  if (!connectionOpen) {
+    return (
+      <div className="chat-area__container">
+        <div className="chat-area__main">Connecting server</div>
+      </div>
+    );
+  }
 
   return (
     <div className="chat-area__container">
