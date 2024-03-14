@@ -25,4 +25,4 @@ you can access client by this url http://localhost:3000
 
 ## Deployemnet link
 
-app is deployed at this link http://localhost:3000
+app is deployed at this link https://kuvaka-assignment.vercel.app/
