@@ -1,0 +1,30 @@
+# dependencies
+/client/node_modules
+/server/node_modules
+
+# production
+/client/dist
+/server/dist
+
+# misc
+/client/.DS_Store
+/server/.DS_Store
+
+/client/.env.local
+/server/.env
+
+# testing
+/client/coverage
+
+# next.js
+/client/.next/
+/client/out/
+
+# production
+/client/build
+
+# vercel
+/client/.vercel
+
+# typescript
+/client/next-env.d.ts
